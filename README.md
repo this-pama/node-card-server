@@ -1,0 +1,1 @@
+A simple Node server for licence generation and a react native mobile app activator.
