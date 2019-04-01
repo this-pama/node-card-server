@@ -10,8 +10,8 @@ const nodemailer = require('nodemailer');
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: 'xxxxx@gmail.com',
-    pass: 'xxxxx'
+    user: 'adedapopaul@gmail.com',
+    pass: 'moronkeji'
   }
 });
 
@@ -32,7 +32,7 @@ export default({ config, db }) => {
   api.get('/:serial', (req, res) => {
     Licence.find( {serial: req.params.serial} , (err, user) => {
       if (err) {
-        res.send(err);
+        console.log(err)
       }
       res.json(user);
     });
@@ -42,46 +42,50 @@ export default({ config, db }) => {
   api.put('/licence', (req, res) => {
     Licence.find({serial: req.body.serial }, (err, user) => {
       if (err) {
-        console.log(err);
+        console.log(err)
       }
       console.log(user, 'first user')
+     try{ 
 
-      if(user[0].username === req.body.username){
-          if( user[0].imei=== req.body.imei || user[0].phoneSerial ===req.body.phoneSerial  ){
-           res.json({ message: 'This serial number is for a single device'})
-          }
-
-          else{
-            //generate reference number
-           let ref = randomize('a', 20);
-
-            let update = {
-              "count" : 1,
-              "phoneSerial" : req.body.phoneSerial,
-              "licenceKey" : ref,
-              "imei" : req.body.imei,
+        if(user[0].username === req.body.username){
+            if( user[0].imei=== req.body.imei || user[0].phoneSerial ===req.body.phoneSerial  ){
+             res.json({ message: 'This serial number is for a single device'})
             }
 
-            let id = user[0]._id
-            Licence.findByIdAndUpdate( id, update,  (err, user) => {
-              if (err){
-                res.send( err )
+            else{
+              //generate reference number
+             let ref = randomize('a', 20);
+
+              let update = {
+                "count" : 1,
+                "phoneSerial" : req.body.phoneSerial,
+                "licenceKey" : ref,
+                "imei" : req.body.imei,
               }
-              console.log(user, " second user")
-               // send notification email to buyer
-                let email = user.email
-                var mailOptions = {
-                  from: 'noreplySale@jyqwinslimited.com',
-                  to: email,
-                  subject: 'Confirmation of Device Activation',
-                  html: '<h1>Hello </h1><p>This is to confirm the payment for your device activation. Thank you.</p><p>Contact us on +234 816 787 6460 for any enquiry.</p>'
+
+              let id = user[0]._id
+              Licence.findByIdAndUpdate( id, update,  (err, user) => {
+                if (err){
+                  console.log(err)
                 }
-                transporter.sendMail(mailOptions)
-               return res.json({ licenceKey:`${user.licenceKey}` } );
-            });
-          }
+                console.log(user.licenceKey, " second user")
+                 // send notification email to buyer
+                  let email = user.email
+                  var mailOptions = {
+                    from: 'noreplySale@jyqwinslimited.com',
+                    to: email,
+                    subject: 'Confirmation of Device Activation',
+                    html: '<h1>Hello </h1><p>This is to confirm the payment for your device activation. Thank you.</p><p>Contact us on +234 816 787 6460 for any enquiry.</p>'
+                  }
+                  transporter.sendMail(mailOptions)
+                 return res.json({ licenceKey:`${ref}` } );
+              });
+            }
+        }
+         else{res.json({message: 'User does not exist'})}
+      }catch(err){
+        res.json({message: 'User does not exist'})
       }
-       else{res.json({message: 'User does not exist'})}
     });
   });
 
@@ -98,7 +102,7 @@ export default({ config, db }) => {
 
         newLicence.save(function(err, user) {
           if (err) {
-            res.send(err);
+            console.log(err)
           }
              // send notification email to buyer
                 let email = req.body.email;

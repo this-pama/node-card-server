@@ -10,8 +10,8 @@ const nodemailer = require('nodemailer');
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: 'xxxxxxxxxxx@gmail.com',
-    pass: 'xxxxxxxxx'
+    user: 'adedapopaul@gmail.com',
+    pass: 'moronkeji'
   }
 });
 
@@ -22,7 +22,7 @@ export default({ config, db }) => {
   api.get('/', (req, res) => {
     Request.find({}, (err, users) => {
       if (err) {
-        res.send(err);
+        console.log(err)
       }
       res.json(users);
     });
@@ -32,7 +32,7 @@ export default({ config, db }) => {
   api.get('/:name', (req, res) => {
     Request.find({name: req.params.name}, (err, user) => {
       if (err) {
-        res.send(err);
+        console.log(err)
       }
       res.json(user);
     });
@@ -52,7 +52,7 @@ export default({ config, db }) => {
 
         newRequest.save(function(err, user) {
           if (err) {
-            res.send(err);
+            console.log(err);
           }
              // send notification email to buyer
                 let email = req.body.email;
