@@ -4,7 +4,7 @@
   "description": "Airtel NG Card Generator server",
   "main": "dist",
   "scripts": {
-    "start": "NODE_ENV=production  start dist",
+    "start": "babel-node  src/index.js",
     "dev": " nodemon -w src --exec \"babel-node src \"",
     "build": "babel src -s -D -d dist,stage-0",
     "prestart": "npm run -s build",
