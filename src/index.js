@@ -30,10 +30,25 @@ app.use(function(req, res, next) {
 // api routes v1
 app.use('/v1', routes);
 
+
+//route response for default home
 app.get('/', function(req, res){
 	res.send("Welcome")
 })
 
+//hardcoded login route
+app.post('/login', (req, res) => {
+	if(req.body.email == "adedapopaul@yahoo.com" && req.body.password == 'password'){
+		res.json({
+			text: 'login successful'
+		})
+	}
+	else{
+		res.json({
+			text: 'user does not exist'
+		})
+	}
+})
 
 app.server.listen(config.port);
 

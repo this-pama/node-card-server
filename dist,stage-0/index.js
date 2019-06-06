@@ -55,8 +55,22 @@ app.use(function (req, res, next) {
 // api routes v1
 app.use('/v1', _routes2.default);
 
+//route response for default home
 app.get('/', function (req, res) {
 	res.send("Welcome");
+});
+
+//hardcoded login route
+app.post('/login', function (req, res) {
+	if (req.body.email == "adedapopaul@yahoo.com" && req.body.password == 'password') {
+		res.json({
+			text: 'login successful'
+		});
+	} else {
+		res.json({
+			text: 'user does not exist'
+		});
+	}
 });
 
 app.server.listen(_config2.default.port);
