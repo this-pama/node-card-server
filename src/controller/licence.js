@@ -18,6 +18,14 @@ const transporter = nodemailer.createTransport({
 export default({ config, db }) => {
   let api = Router();
 
+  //allow cross origin request
+api.use(function(req, res, next) {
+	res.header("Access-Control-Allow-Origin", "*");
+	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+	res.header('Access-Control-Allow-Methods', 'GET,PUT,PATCH,POST,DELETE');
+	next();
+});
+
   // '/v1/user' - GET all users
   api.get('/', (req, res) => {
     Licence.find({}, (err, users) => {
