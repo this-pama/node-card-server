@@ -94,10 +94,10 @@ export default({ config, db }) => {
   api.post('/add', (req, res) => {
         
         // create user profile
-        let newLicence = new Licence();
-        newLicence.username = req.body.username;
-        newLicence.serial = req.body.serial;
-        newLicence.email = req.body.email;
+        let newLicence = new Licence(req.body);
+        // newLicence.username = req.body.username;
+        // newLicence.serial = req.body.serial;
+        // newLicence.email = req.body.email;
 
 
         newLicence.save(function(err, user) {
