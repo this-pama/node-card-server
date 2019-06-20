@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+var mongoose = require('mongoose')
 let Schema = mongoose.Schema;
 
 let trialSchema = new Schema({
@@ -12,7 +12,7 @@ let trialSchema = new Schema({
   },
   serial: {
     type: String,
-    required: false
+    required: true
   },
   imei: {
     type: String,
