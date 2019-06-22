@@ -1,5 +1,5 @@
-import jwt from 'jsonwebtoken';
-import expressJwt from 'express-jwt';
+const jwt = require('jsonwebtoken') ;
+const expressJwt = require('express-jwt');
 
 const TOKENTIME = 60*60*24*30 // 30 days
 const SECRET = "W3 Hav3 th3 kn0w h0w";
@@ -13,6 +13,7 @@ let generateAccessToken = (req, res, next) => {
   }, SECRET, {
     expiresIn: TOKENTIME // 30 days
   });
+  console.log(req.token)
   next();
 }
 
