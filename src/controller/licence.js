@@ -15,7 +15,7 @@ const transporter = nodemailer.createTransport({
   }
 });
 
-export default({ config, db }) => {
+const licence = ({ config, db }) => {
   let api = Router();
 
   //allow cross origin request
@@ -28,6 +28,7 @@ api.use(function(req, res, next) {
 
   // '/v1/user' - GET all users
   api.get('/', (req, res) => {
+    console.log('test')
     Licence.find({}, (err, users) => {
       if (err) {
         res.send(err);
@@ -130,3 +131,5 @@ api.use(function(req, res, next) {
     });
   return api;
 }
+
+module.exports= licence
