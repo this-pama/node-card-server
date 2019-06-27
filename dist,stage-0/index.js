@@ -57,7 +57,7 @@ app.use('/v1', _routes2.default);
 
 //route response for default home
 app.get('/', function (req, res) {
-	res.send("Welcome");
+	res.send("Welcome home");
 });
 
 //hardcoded login route

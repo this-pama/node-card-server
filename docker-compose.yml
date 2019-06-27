@@ -5,7 +5,7 @@ services:
     restart: always
     build: .
     volumes:
-      - .:/usr/src/app
+      - .:/app
     deploy:
       replicas: 5
       resources:

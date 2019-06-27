@@ -1,10 +1,10 @@
 {
-  "name": "airtel_server",
-  "version": "0.0.1",
-  "description": "Airtel NG Card Generator server",
-  "main": "dist",
+  "name": "licence_restful_api",
+  "version": "0.1.0",
+  "description": "A Restful Api for licencing any application.",
+  "main": "src",
   "scripts": {
-    "start": "babel-node  src/index.js",
+    "start": "nodemon -w -L src --exec \"babel-node src \"",
     "dev": " nodemon -w src --exec \"babel-node src \"",
     "build": "babel src -s -D -d dist,stage-0",
     "prestart": "npm run -s build",
