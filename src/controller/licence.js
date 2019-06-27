@@ -15,24 +15,19 @@ const transporter = nodemailer.createTransport({
   }
 });
 
-const licence = ({ config, db }) => {
-  let api = Router();
 
-  //allow cross origin request
-api.use(function(req, res, next) {
-	res.header("Access-Control-Allow-Origin", "*");
-	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-	res.header('Access-Control-Allow-Methods', 'GET,PUT,PATCH,POST,DELETE');
-	next();
-});
+module.exports = ({ config, db }) => {
+  var  api = Router();
+
 
   // '/v1/user' - GET all users
   api.get('/', (req, res) => {
-    console.log('test')
+    
     Licence.find({}, (err, users) => {
       if (err) {
         res.send(err);
       }
+      console.log('test')
       res.json(users);
     });
   });
@@ -132,4 +127,3 @@ api.use(function(req, res, next) {
   return api;
 }
 
-module.exports= licence
