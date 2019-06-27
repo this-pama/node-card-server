@@ -46,39 +46,39 @@ describe('licence Route', ()=>{
 
         })
 
-        // it('should throw error', (done)=>{
-        //     dbFindStub = sandbox.stub(mongoose.Model, 'find').rejects(new Error('fake_error'))
-        //     request(licence).get('/')
-        //         .expect(400)
-        //         .end((err, response)=>{
-        //             expect(dbFindStub).to.have.been.calledOnce
-        //             expect(err.message).to.equal('');
-        //             done(err)
-        //         })
+        it('should throw error', (done)=>{
+            dbFindStub = sandbox.stub(mongoose.Model, 'find').rejects(new Error('fake_error'))
+            request(licence).get('/')
+                .expect(400)
+                .end((err, response)=>{
+                    expect(dbFindStub).to.have.been.calledOnce
+                    expect(err.message).to.equal('');
+                    done(err)
+                })
 
-        //     done()
-        // })
+            done()
+        })
 
     })
 
-    // context('GET /:serial', ()=>{
-    //     beforeEach(()=>{
-    //         sandbox.restore()
-    //         licence = rewire('./licence')
-    //     })
+    context('GET /:serial', ()=>{
+        beforeEach(()=>{
+            sandbox.restore()
+            licence = rewire('./licence')
+        })
 
-    //     it('should get /:serial', (done)=>{
-    //         dbFindStub = sandbox.stub(mongoose.Model, 'find').resolves({name: 'fake_serial'})
+        it('should get /:serial', (done)=>{
+            dbFindStub = sandbox.stub(mongoose.Model, 'find').resolves({name: 'fake_serial'})
 
-    //         request(licence).get('/123')
-    //             .expect(200)
-    //             .end((err, response)=>{
-    //                 expect(dbFindStub).to.have.been.calledOnce
-    //                 expect(response.body).to.have.property('name').to.equal('fake_serial');
-    //                 done(err)
-    //             })
+            request(licence).get('/123')
+                .expect(200)
+                .end((err, response)=>{
+                    expect(dbFindStub).to.have.been.calledOnce
+                    expect(response.body).to.have.property('name').to.equal('fake_serial');
+                    done(err)
+                })
 
-    //         done()
-    //     })
-    // })
+            done()
+        })
+    })
 })

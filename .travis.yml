@@ -10,6 +10,7 @@ services:
 
 script:
   - npm run test
+  - npm run start
   - docker-compose up -d 
   - docker compose down 
 
