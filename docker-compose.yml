@@ -1,8 +1,11 @@
 version: "3"
 services:
-  web:
-    # replace username/repo:tag with your name and image details
-    image: thispama/card-server-docker-practice:version1
+  app:
+    container_name: card-server-restful-api
+    restart: always
+    build: .
+    volumes:
+      - .:/usr/src/app
     deploy:
       replicas: 5
       resources:
@@ -12,20 +15,12 @@ services:
       restart_policy:
         condition: on-failure
     ports:
-      - "4000:4000"
-    networks:
-      - webnet
-  visualizer:
-    image: dockersamples/visualizer:stable
+      - "80:4000"
+    links: 
+      - mongo
+  mongo:
+    container_name: mongo
+    image: mongo
     ports:
-      - "8080:4000"
-    volumes:
-      - "/var/run/docker.sock:/var/run/docker.sock"
-    deploy:
-      placement:
-        constraints: [node.role == manager]
-    networks:
-      - webnet
+      - "27017:27017"
   
-networks:
-  webnet:

@@ -1,12 +1,7 @@
 'use strict';
 
-var _mongoose = require('mongoose');
-
-var _mongoose2 = _interopRequireDefault(_mongoose);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Schema = _mongoose2.default.Schema;
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
 var licenceSchema = new Schema({
   fullName: {
@@ -19,7 +14,7 @@ var licenceSchema = new Schema({
   },
   serial: {
     type: String,
-    required: false
+    required: true
   },
   imei: {
     type: String,
@@ -31,5 +26,5 @@ var licenceSchema = new Schema({
   count: Number
 });
 
-module.exports = _mongoose2.default.model('Licence', licenceSchema);
+module.exports = mongoose.model('Licence', licenceSchema);
 //# sourceMappingURL=licence.js.map

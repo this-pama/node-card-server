@@ -1,9 +1,5 @@
 'use strict';
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
 var _mongoose = require('mongoose');
 
 var _mongoose2 = _interopRequireDefault(_mongoose);
@@ -35,7 +31,7 @@ var transporter = nodemailer.createTransport({
   }
 });
 
-exports.default = function (_ref) {
+module.exports = function (_ref) {
   var config = _ref.config,
       db = _ref.db;
 
@@ -43,10 +39,12 @@ exports.default = function (_ref) {
 
   // '/v1/user' - GET all users
   api.get('/', function (req, res) {
+
     _licence2.default.find({}, function (err, users) {
       if (err) {
         res.send(err);
       }
+      console.log('test');
       res.json(users);
     });
   });
