@@ -4,6 +4,7 @@ services:
     container_name: card-server-restful-api
     restart: always
     build: .
+    # command: nodemon -w -L src --exec \"babel-node src \"
     volumes:
       - .:/app
     deploy:

@@ -6,6 +6,9 @@
   "scripts": {
     "start": " nodemon -w src --exec \"babel-node src \"",
     "dev": " nodemon -w src --exec \"babel-node src \"",
+    "docker:prod": "docker-compose up -d",
+    "docker:dev": "docker-compose up ",
+    "docker:down": "docker-compose down",
     "build": "babel src -s -D -d dist,stage-0",
     "lint": "eslint src",
     "test": "cross-env NODE_ENV=development mocha -r esm \"./{,!(node_modules)/**/}*.test.js\" --exit",
