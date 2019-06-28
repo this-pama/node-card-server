@@ -4,7 +4,7 @@ services:
     container_name: card-server-restful-api
     restart: always
     build: .
-    image: registry.heroku.com/fierce-fortress-36418
+    image: thispama/licenceapi:version1
     # command: nodemon -L --inspect=0.0.0.0:5858
     volumes:
       - .:/app
