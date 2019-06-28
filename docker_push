@@ -1,4 +1,3 @@
 #!/bin/bash
-echo docker login --username=_ --password=${HEROKU_TOKEN} registry.heroku.com
-echo docker-compose up -d  
+echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin registry.heroku.com
 echo docker-compose push 
