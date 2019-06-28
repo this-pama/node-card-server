@@ -4,7 +4,7 @@ services:
     container_name: card-server-restful-api
     restart: always
     build: .
-    # image: registry.heroku.com/fierce-fortress-36418/web
+    image: thispama/licenceapi:version1
     # command: nodemon -L --inspect=0.0.0.0:5858
     volumes:
       - .:/app
@@ -26,6 +26,7 @@ services:
       - mongo
   mongo:
     container_name: mongo
+    image: thispama/mongo:version1
     image: mongo
     ports:
       - "27017:27017"
