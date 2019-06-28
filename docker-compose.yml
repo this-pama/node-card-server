@@ -4,9 +4,14 @@ services:
     container_name: card-server-restful-api
     restart: always
     build: .
-    # command: nodemon -w -L src --exec \"babel-node src \"
+    image: registry.heroku.com/fierce-fortress-36418/web
+    # command: nodemon -L --inspect=0.0.0.0:5858
     volumes:
       - .:/app
+    environment:
+      NODE_ENV: development
+    depends_on: 
+      - mongo
     deploy:
       replicas: 5
       resources:

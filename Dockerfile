@@ -1,5 +1,6 @@
 FROM node:10
 
+ARG NODE_ENV
 # Create app directory
 WORKDIR /app
 RUN npm install -g nodemon@1.11.0

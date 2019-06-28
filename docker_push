@@ -1,4 +1,4 @@
 #!/bin/bash
 echo docker login --username=_ --password=${HEROKU_TOKEN} registry.heroku.com
-echo docker-compose up -d  registry.heroku.com/fierce-fortress-36418/web .
-echo docker push registry.heroku.com/fierce-fortress-36418/web
+echo docker-compose up -d  
+echo docker-compose push 
