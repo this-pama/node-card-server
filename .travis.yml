@@ -13,4 +13,11 @@ script:
   - npm run docker:prod
   - npm run docker:down 
 
-
+deploy:
+  provider: script
+  script: bash docker_push
+  on:
+    branch: master
+notifications:
+  email:
+    - adedapopaul@yahoo.com

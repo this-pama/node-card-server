@@ -1,0 +1,4 @@
+#!/bin/bash
+docker login --username=_ --password=${HEROKU_TOKEN} registry.heroku.com
+docker build -t registry.heroku.com/licence_api/web .
+docker push registry.heroku.com/licence_api/web
