@@ -1,3 +1,4 @@
 #!/bin/bash
 echo docker login --username=_ --password=${HEROKU_TOKEN} registry.heroku.com
 echo docker build -t registry.heroku.com/testapp/app .
+echo docker push registry.heroku.com/testapp/app
