@@ -69,7 +69,7 @@
     "express-jwt": "^5.1.0",
     "jsonwebtoken": "^7.1.9",
     "mongoose": "^5.7.5",
-    "nodemailer": "^4.6.8",
+    "nodemailer": "^6.4.16",
     "nodemon": "^1.11.0",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
